@@ -1,23 +1,730 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-body{
-    font-family: 'Open Sans', sans-serif;
-    /* background-image: url('/static/assets/background.jpg'); */
-    margin: 5%;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
-.center-div{
-    padding-top: 10%;
+body {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    background: #740132;
 }
 
-.btn.btn-success{
-    padding: .4em 2em;
+.container {
+    height: 100%;
 }
 
-form{
-    padding: 0em 3em;
+.left-container {
+    height: 100vh;
+    flex: 1.3;
+    color: #fff;
+    background: #0e0e24;
 }
 
-.label{
-    font-size: .8em;
+.right-container {
+    flex: 2;
+    background: url(assets/circles.jpeg) no-repeat;
+    background-size: contain;
+    background-position: center center;
 }
+
+.form__container {
+    width: 100%;
+    padding: 30px 60px;
+}
+
+.form__container h1 {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #fff;
+    text-align: left;
+}
+
+.desc {
+    font-size: 16px;
+    color: #878787;
+    margin: 0 0 1.5rem 0;
+}
+
+.desc a {
+    color: #fff;
+    margin-bottom: 0;
+    text-decoration: underline;
+    background: transparent;
+}
+
+.input-group {
+    display: block;
+    position: relative;
+    height: 100%;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+    background-color: rgba(255, 255, 255, 0.07);
+    cursor: text;
+    border: 1px solid transparent;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.input {
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #fff;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: calc(1rem - 1px) 1rem;
+}
+
+.input:focus {
+    outline: none;
+    border: 1px solid #fff;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+button[type="submit"] {
+    font-weight: 600;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn {
+    text-decoration: none;
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    word-break: break-word;
+    hyphens: auto;
+    min-height: 2.75rem;
+    min-width: 4.75rem;
+    border: 0;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1.125rem;
+    color: #0f0f0f;
+    background: #fff;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.btn:hover {
+    background: #e7e7e7;
+}
+
+.btn:active {
+    background: #cfcfcf;
+}
+
+.btn.secondary {
+    background: rgba(255, 255, 255, 0.07);
+    color: #fff;
+}
+
+.btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.btn.secondary:active {
+    background: rgba(255, 255, 255, 0.21);
+}
+
+.btn.fullWidth {
+    width: 100%;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.inner-button {
+    padding: 0.25rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+a {
+    margin-bottom: 0;
+}
+
+.socialLoginButton {
+    margin-bottom: 1rem;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+.socialLoginButtonText {
+    margin-left: 8px;
+}
+
+.socialLoginDivider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+    padding: 1.5rem 0;
+}
+
+.socialLine {
+    flex: 1;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.socialLoginDividerText {
+    color: rgba(255, 255, 255, 0.15);
+    margin: 0 0.5rem;
+}
+
+.forgot__password {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.forgot__password a {
+    color: #fff;
+    margin-bottom: 0;
+    text-decoration: underline;
+    background: transparent;
+}
+
+/* responsive layout */
+
+@media (max-width: 425px) {
+    /*MobileL(425px&below*/
+    body {
+        font-size: 16px;
+        background: #0f0f0f;
+    }
+
+    .right-container {
+        display: none;
+    }
+
+    .left-container {
+        height: 100%;
+    }
+
+    .form__container {
+        width: 100%;
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .form__container h1 {
+        text-align: center;
+    }
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+    /* Tablet (426px to 768px) */
+    .right-container {
+        display: none;
+    }
+
+    .left-container {
+        height: 100vh;
+    }
+
+    .form__container {
+        width: 100%;
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .form__container h1 {
+        text-align: center;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1440px) {
+    /* Laptop L (769px to 1440px */
+    .body {
+        min-height: 100vh;
+    }
+
+    .right-container {
+        display: flex;
+    }
+
+    .left-container {
+        height: 680px;
+    }
+
+    .form__container {
+        width: 100%;
+        padding: 30px 40px;
+        text-align: center;
+    }
+
+    .form__container h1 {
+        text-align: center;
+        padding: 2rem;
+        font-size: 34px;
+    }
+}
+
+@media (min-width: 1441px) and (max-width: 2560px) {
+    /* 4k - 2560px */
+    .right-container {
+        display: flex;
+    }
+
+    .left-container {
+        height: 100vh;
+    }
+
+    .form__container {
+        width: 100%;
+        padding: 30px 16px;
+        text-align: center;
+    }
+
+    .form__container h1 {
+        text-align: center;
+        font-size: 34px;
+    }
+}
+
+/* end of login page */
+/* start of calendar css */
+/* G-font: Poppins */
+
+:root {
+    --primary-clr: #b38add;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e2e1dc;
+}
+
+.container-calendar {
+    position: relative;
+    width: 1200px;
+    min-height: 850px;
+    margin: 0 auto;
+    padding: 5px;
+    color: #fff;
+    display: flex;
+    border-radius: 10px;
+    background-color: #373c4f;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.left {
+    width: 60%;
+    padding: 20px;
+}
+
+.calendar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: #878895;
+    border-radius: 5px;
+    background-color: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.calendar::before,
+.calendar::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 12px;
+    height: 97%;
+    border-radius: 0 5px 5px 0;
+    background-color: #d3d5d6d7;
+    transform: translateY(-50%);
+    -webkit-border-radius: 0 5px 5px 0;
+    -moz-border-radius: 0 5px 5px 0;
+    -ms-border-radius: 0 5px 5px 0;
+    -o-border-radius: 0 5px 5px 0;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+
+.calendar::before {
+    height: 94%;
+    left: calc(100% + 12px);
+    background-color: rgb(153, 153, 153);
+}
+
+.calendar .month {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.calendar .month .prev,
+.calendar .month .next {
+    cursor: pointer;
+}
+
+.calendar .month .prev:hover,
+.calendar .month .next:hover {
+    color: var(--primary-clr);
+}
+
+.calendar .weekdays {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.calendar .weekdays div {
+    width: 14.28%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar .days {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.calendar .days .day {
+    width: 14.28%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--primary-clr);
+    border: 1px solid #f5f5f5;
+}
+
+.calendar .day:not(.prev-date , .next-date):hover {
+    color: #fff;
+    background-color: var(--primary-clr);
+}
+
+.calendar .days .prev-date,
+.calendar .days .next-date {
+    color: #b3b3b3;
+}
+
+.calendar .days .active {
+    position: relative;
+    font-size: 2rem;
+    color: #fff;
+    background-color: var(--primary-clr);
+}
+
+.calendar .days .active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 10px 2px var(--primary-clr);
+}
+
+.calendar .days .today {
+    font-size: 2rem;
+}
+
+.calendar .days .event {
+    position: relative;
+}
+
+.calendar .days .event:after {
+    content: '';
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    width: 75%;
+    height: 6px;
+    border-radius: 30px;
+    transform: translateX(-50%);
+    background-color: var(--primary-clr);
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+
+.calendar .event:hover::after {
+    background-color: #fff;
+}
+
+.calendar .active.event::after {
+    background-color: #fff;
+    bottom: 20%;
+}
+
+.calendar .active.event {
+    padding-bottom: 10px;
+}
+
+.calendar .goto-today {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    color: var(--primary-clr);
+}
+
+.calendar .goto-today .goto {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid var(--primary-clr);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.calendar .goto-today .goto input {
+    width: 100%;
+    height: 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 0 20px;
+    color: var(--primary-clr);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.calendar .goto-today button {
+    padding: 5px 10px;
+    border: 1px solid var(--primary-clr);
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--primary-clr);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.calendar .goto-today button:hover {
+    color: #fff;
+    background-color: var(--primary-clr);
+}
+
+.calendar .goto-today .goto button {
+    border: none;
+    border-left: 1px solid var(--primary-clr);
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+}
+
+.container .right {
+    position: relative;
+    width: 40%;
+    min-height: 100%;
+    padding: 20px 0;
+}
+
+.right .today-date {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    padding-left: 70px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+
+.today-date .event-day {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.today-date .event-date {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #878895;
+}
+
+/* to do */
+.events {
+    width: 100%;
+    height: 100%;
+    max-height: 600px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 4px;
+}
+
+.events .event {
+    position: relative;
+    width: 95%;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0 20px;
+    padding-left: 50px;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(90deg, #3f4458, transparent);
+}
+
+.events .event:nth-child(even) {
+    background: transparent;
+}
+
+.events .event:hover {
+    background: linear-gradient(90deg, var(--primary-clr), transparent);
+}
+
+.events .event .title {
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+
+.events .event .title .event-title {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 20px;
+}
+
+.events .event .title i {
+    color: var(--primary-clr);
+    font-size: 0.5rem;
+}
+
+.events .event:hover .title i,
+.events .event:hover .event-time {
+    color: #fff;
+}
+
+.events .event .title .event-time {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #878895;
+    margin-left: 15px;
+    pointer-events: none;
+}
+
+.event::after {
+    /* press windows key + . or ; to open emoji window and select check mark */
+    content: "✔";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    font-size: 3rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.3;
+    color: var(--primary-clr);
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+
