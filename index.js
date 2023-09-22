@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const { v4: uuidv4 } = require('uuid');
 const session = require('express-session')
  
-const router = require('./router/auth.ejs');
+const router = require('./router/auth');
 
 //create the server
 const app = express();
@@ -39,6 +39,13 @@ app.use(session({
 //specify the routers
 app.use('/', router);
 
+app.get('/calendar', (req, res) =>{
+    res.render("calendar");
+})
+
+app.get("/signup", (req, res,) => {
+    res.render("signup");
+})
 //listen to the server
 app.listen(port, ()=>{
     console.log(`The server is at http://${hostname}:${port}.`);
