@@ -1,0 +1,29 @@
+<%-include('header') -%>
+
+<form action="/signup" method="post">
+<div class="d-flex flex-column gap-3">
+    <h3>Create An Account</h3>
+    <div>
+        <input type="text" class="p-1" placeholder="First Name">
+        <input type="text" class="p-1" placeholder="Last Name">
+    </div>
+    
+    <div>
+        <input type="text" class="p-1" placeholder="Email">
+        <input type="text" class="p-1" placeholder="Contact Number">
+    </div>
+
+    <div>
+        <input type="text" class="p-1" placeholder="Create Password">
+        <input type="text" class="p-1" placeholder="Confirm Password">
+    </div>
+    
+    <input type="submit" class="btn btn-outline-primary" value="Create Account">
+
+    <p>Already have an acount? <a href="/">Sign in here!</a></p>
+</div>
+
+</form>
+
+
+<%-include('footer') -%>
