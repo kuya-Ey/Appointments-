@@ -1,235 +1,206 @@
 // JS for calendar functions
-const calendar = document.querySelector('.calendar'),
-    date = document.querySelector('.date'),
-    daysContainer = document.querySelector('.days'),
-    prev = document.querySelector('.prev')
-    next = document.querySelector('.next'),
-    todayBtn = document.querySelector('.today-btn'),
-    gotoBtn = document.querySelector('.goto-btn'),
-    dateInput = document.querySelector('.date-input'),
-    eventDay = document.querySelector('.event-day'),
-    eventDate = document.querySelector('.event-date'),
-    eventsContainer = document.querySelector('.events'),
-    addEventSubmit = document.querySelector('.add-event-btn');
+// const calendar = document.querySelector('.calendar'),
+//     date = document.querySelector('.date'),
+//     daysContainer = document.querySelector('.days'),
+//     prev = document.querySelector('.prev')
+//     next = document.querySelector('.next'),
+//     todayBtn = document.querySelector('.today-btn'),
+//     gotoBtn = document.querySelector('.goto-btn'),
+//     dateInput = document.querySelector('.date-input'),
+//     eventDay = document.querySelector('.event-day'),
+//     eventDate = document.querySelector('.event-date'),
+//     eventsContainer = document.querySelector('.events'),
+//     addEventSubmit = document.querySelector('.add-event-btn');
 
 
-let today = new Date();
-let activeDay;
-let month = today.getMonth();
-let year = today.getFullYear();
+// let today = new Date();
+// let activeDay;
+// let month = today.getMonth();
+// let year = today.getFullYear();
 
 
-const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
-];
-
-// default events array
-// const eventsArr = [
-//     {
-//         day: 20,
-//         month: 9,
-//         year: 2023,
-//         events: [
-//             {
-//                 title: 'Event 1 lorem ipsum dolar sit genfa tersd dsad',
-//                 time: '10:00 AM',
-//             },
-//             {
-//                 title: 'Event 2',
-//                 time: '11:00 AM',
-//             },
-//         ],
-//     },
-//     {
-//         day: 22,
-//         month: 9,
-//         year: 2023,
-//         events: [
-//             {
-//                 title: 'Event 1 lorem ipsum dolar sit genfa tersd dsad',
-//                 time: '10:00 AM',
-//             },
-//         ],
-//     },
+// const months = [
+//     'January',
+//     'February',
+//     'March',
+//     'April',
+//     'May',
+//     'June',
+//     'July',
+//     'August',
+//     'September',
+//     'October',
+//     'November',
+//     'December',
 // ];
 
-// set an empty array
-let eventsArr = [];
-// then call get
-getEvents();
 
-// function to add days
+// // set an empty array
+// let eventsArr = [];
+// // then call get
+// getEvents();
 
-function initCalendar() {
-    //to get prev month days and current month all days and rem next month days
-    const firstDay = new Date(year, month, 1);
-    const lastDay = new Date(year, month + 1, 0);
-    const prevLastDay = new Date(year, month , 0);
-    const prevDays = prevLastDay.getDate();
-    const lastDate = lastDay.getDate();
-    const day = firstDay.getDay();
-    const nextDays = 7 - lastDay.getDay() - 1;
+// // function to add days
 
-    // update date top of calendar
-    date.innerHTML = months[month] + ' ' + year;
+// function initCalendar() {
+//     //to get prev month days and current month all days and rem next month days
+//     const firstDay = new Date(year, month, 1);
+//     const lastDay = new Date(year, month + 1, 0);
+//     const prevLastDay = new Date(year, month , 0);
+//     const prevDays = prevLastDay.getDate();
+//     const lastDate = lastDay.getDate();
+//     const day = firstDay.getDay();
+//     const nextDays = 7 - lastDay.getDay() - 1;
 
-    // adding days on dom
+//     // update date top of calendar
+//     date.innerHTML = months[month] + ' ' + year;
 
-    let days = '';
+//     // adding days on dom
 
-    // prev month days
+//     let days = '';
 
-    for(let x = day; x>0; x--){
-        days += `<div class ='day prev-date' >${prevDays -x +1}</div>`;
-    }
+//     // prev month days
 
-    // current month days
+//     for(let x = day; x>0; x--){
+//         days += `<div class ='day prev-date' >${prevDays -x +1}</div>`;
+//     }
 
-    for(let i = 1; i <= lastDate; i++) {
+//     // current month days
 
-        // check if event present on current day
+//     for(let i = 1; i <= lastDate; i++) {
 
-        let event = false;
-        eventsArr.forEach((eventObj) => {
-            if(
-                eventObj.day === i &&
-                eventObj.month === month + 1 &&
-                eventObj.year === year
-            ) {
-                // if event is found
-                event = true;
-            }
-        });
+//         // check if event present on current day
 
-
-        // if day is today add class today
-        if(
-            i === new Date().getDate() &&
-            year ===new Date().getFullYear() &&
-            month === new Date().getMonth()
-        ) {
-
-            activeDay = i;
-            getActiveDay(i);
-            updateEvents(i);
-
-            // if event found also add event class
-            // add active on today at startup
-
-            if (event) {
-                days += `<div class ='day today active event' >${i}</div>`;
-            } else {
-                days += `<div class ='day today active' >${i}</div>`;
-            }
-        }
-        // add remaining as it is
-        else {
-            if (event) {
-                days += `<div class ='day event' >${i}</div>`;
-            } else {
-                days += `<div class ='day' >${i}</div>`;
-            }
-        }
-    }
-
-    // next month days
-
-    for (let j = 1; j <= nextDays; j++){
-        days += `<div class ='day next-date' >${j}</div>`;
-    }
-    daysContainer.innerHTML = days;
-    // add listner after calendar initialzed
-    addListner();
-}
-
-initCalendar();
-
-// prev month
-
-function prevMonth() {
-    month--;
-    if (month < 0) {
-        month = 11;
-        year--;
-    }
-    initCalendar();
-}
-
-// next month
-
-function nextMonth() {
-    month++;
-    if (month > 11) {
-        month = 0;
-        year++;
-    }
-    initCalendar();
-}
-
-// add eventlistener on prev and next
-
-prev.addEventListener('click' , prevMonth);
-next.addEventListener('click' , nextMonth);
+//         let event = false;
+//         eventsArr.forEach((eventObj) => {
+//             if(
+//                 eventObj.day === i &&
+//                 eventObj.month === month + 1 &&
+//                 eventObj.year === year
+//             ) {
+//                 // if event is found
+//                 event = true;
+//             }
+//         });
 
 
-// adding goto date and goto today function
+//         // if day is today add class today
+//         if(
+//             i === new Date().getDate() &&
+//             year ===new Date().getFullYear() &&
+//             month === new Date().getMonth()
+//         ) {
 
-todayBtn.addEventListener('click' , ()=> {
-    today = new Date();
-    month = today.getMonth();
-    year = today.getFullYear();
-    initCalendar();
-});
+//             activeDay = i;
+//             getActiveDay(i);
+//             updateEvents(i);
 
-dateInput.addEventListener('keyup' , (e) => {
-    // allow numerical data, remove anything else
-    dateInput.value = dateInput.value.replace(/[^0-9/]/g, '');
-    if(dateInput.value.length === 2) {
-        // add slash if 2 numbers are entried
-        dateInput.value += '/';
-    }
-    if (dateInput.value.length > 7) {
-        // dont allow more than 7 character
-        dateInput.value = dateInput.value.slice(0, 7);
-    }
+//             // if event found also add event class
+//             // add active on today at startup
+
+//             if (event) {
+//                 days += `<div class ='day today active event' >${i}</div>`;
+//             } else {
+//                 days += `<div class ='day today active' >${i}</div>`;
+//             }
+//         }
+//         // add remaining as it is
+//         else {
+//             if (event) {
+//                 days += `<div class ='day event' >${i}</div>`;
+//             } else {
+//                 days += `<div class ='day' >${i}</div>`;
+//             }
+//         }
+//     }
+
+//     // next month days
+
+//     for (let j = 1; j <= nextDays; j++){
+//         days += `<div class ='day next-date' >${j}</div>`;
+//     }
+//     daysContainer.innerHTML = days;
+//     // add listner after calendar initialzed
+//     addListner();
+// }
+
+// initCalendar();
+
+// // prev month
+
+// function prevMonth() {
+//     month--;
+//     if (month < 0) {
+//         month = 11;
+//         year--;
+//     }
+//     initCalendar();
+// }
+
+// // next month
+
+// function nextMonth() {
+//     month++;
+//     if (month > 11) {
+//         month = 0;
+//         year++;
+//     }
+//     initCalendar();
+// }
+
+// // add eventlistener on prev and next
+
+// prev.addEventListener('click' , prevMonth);
+// next.addEventListener('click' , nextMonth);
+
+
+// // adding goto date and goto today function
+
+// todayBtn.addEventListener('click' , ()=> {
+//     today = new Date();
+//     month = today.getMonth();
+//     year = today.getFullYear();
+//     initCalendar();
+// });
+
+// dateInput.addEventListener('keyup' , (e) => {
+//     // allow numerical data, remove anything else
+//     dateInput.value = dateInput.value.replace(/[^0-9/]/g, '');
+//     if(dateInput.value.length === 2) {
+//         // add slash if 2 numbers are entried
+//         dateInput.value += '/';
+//     }
+//     if (dateInput.value.length > 7) {
+//         // dont allow more than 7 character
+//         dateInput.value = dateInput.value.slice(0, 7);
+//     }
     
-    // if backspace is pressed
-    if (e.inputType === 'deleteContentBackward') {
-        if(dateInput.value.length === 3) {
-            dateInput.value = dateInput.value.slice(0, 2);
-        }
-    }
-});
+//     // if backspace is pressed
+//     if (e.inputType === 'deleteContentBackward') {
+//         if(dateInput.value.length === 3) {
+//             dateInput.value = dateInput.value.slice(0, 2);
+//         }
+//     }
+// });
 
-gotoBtn.addEventListener('click', gotoDate);
+// gotoBtn.addEventListener('click', gotoDate);
 
-// function to go to input date
+// // function to go to input date
 
-function gotoDate() {
-    const dateArr = dateInput.value.split('/');
-    // some date validation
-    if(dateArr.length === 2) {
-        if(dateArr[0] > 0 && dateArr[0] < 13 && dateArr[1].length === 4) {
-            month = dateArr[0] - 1;
-            year = dateArr[1];
-            initCalendar();
-            return;
-        }
-    }
-    // if invalid date
-    alert('invalid date');
-};
+// function gotoDate() {
+//     const dateArr = dateInput.value.split('/');
+//     // some date validation
+//     if(dateArr.length === 2) {
+//         if(dateArr[0] > 0 && dateArr[0] < 13 && dateArr[1].length === 4) {
+//             month = dateArr[0] - 1;
+//             year = dateArr[1];
+//             initCalendar();
+//             return;
+//         }
+//     }
+//     // if invalid date
+//     alert('invalid date');
+// };
 
 const addEventBtn = document.querySelector('.add-event'),
     addEventContainer = document.querySelector('.add-event-wrapper'),
